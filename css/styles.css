@@ -1,0 +1,61 @@
+.placeholder-img {
+  width: 100%;
+  height: 20rem;
+  border-radius: 0.2rem;
+  object-fit: fill;
+}
+
+.navbar {
+  background-color: #562b81;
+  color: white;
+  height: 3rem;
+}
+
+.style-header-title {
+  display: flex;
+  align-items: center;
+  padding-left: 1.7rem;
+  height: 3rem;
+}
+
+.font {
+  font-family: "Proza Libre", sans-serif;
+}
+
+.style-label {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: bold;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.style-input {
+  height: 2rem;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-column {
+  flex-direction: column;
+}
+
+textarea {
+  resize: none;
+}
+
+.button-container {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: end;
+}
+
+.style-button {
+  border: none;
+  background-color: #562b81;
+  color: white;
+  border-radius: 0.2rem;
+  width: 4rem;
+  height: 1.8rem;
+}
