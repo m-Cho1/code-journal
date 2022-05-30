@@ -62,3 +62,9 @@ textarea {
   height: 1.9rem;
   font-size: 0.9rem;
 }
+
+.style-anchor {
+  color: white;
+  padding-left: 2rem;
+  text-decoration: none;
+}
