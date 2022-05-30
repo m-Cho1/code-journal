@@ -13,10 +13,10 @@ $form.addEventListener('submit', submitEventFunction);
 function submitEventFunction(event) {
   event.preventDefault();
   var newEntryData = {
+    nextEntryId: data.nextEntryId,
     title: $title.value,
     photoUrl: $photoUrl.value,
-    notes: $notes.value,
-    nextEntryId: data.nextEntryId
+    notes: $notes.value
   };
   data.nextEntryId++;
   data.entries.unshift(newEntryData);
