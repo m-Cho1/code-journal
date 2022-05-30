@@ -31,4 +31,8 @@
   .column-half {
     width: 50%;
   }
+
+  .navbar {
+    padding-left: 19.8rem;
+  }
 }
