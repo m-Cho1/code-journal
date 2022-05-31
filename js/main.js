@@ -56,9 +56,13 @@ function renderEntry(entry) {
   rowDiv.appendChild(columnDiv2);
 
   var h2Element = document.createElement('h2');
-  h2Element.setAttribute('class', 'title-margin-top');
+  h2Element.setAttribute('class', 'title-margin-top display-flex space-between');
   h2Element.textContent = entry.title;
   columnDiv2.appendChild(h2Element);
+
+  var editIcon = document.createElement('i');
+  editIcon.setAttribute('class', 'fa-solid fa-pen-to-square');
+  h2Element.appendChild(editIcon);
 
   var pElement = document.createElement('p');
   pElement.textContent = entry.notes;
