@@ -14,7 +14,7 @@ $form.addEventListener('submit', submitEventFunction);
 function submitEventFunction(event) {
   event.preventDefault();
   var newEntryData = {
-    nextEntryId: data.nextEntryId,
+    entryId: data.nextEntryId,
     title: $title.value,
     photoUrl: $photoUrl.value,
     notes: $notes.value
@@ -31,6 +31,7 @@ function submitEventFunction(event) {
 // render entry function
 function renderEntry(entry) {
   var listEl = document.createElement('li');
+  listEl.setAttribute('data-entry-id', entry.entryId);
   listEl.setAttribute('class', 'style-list-entry');
 
   var containerDiv = document.createElement('div');
@@ -62,6 +63,7 @@ function renderEntry(entry) {
 
   var editIcon = document.createElement('i');
   editIcon.setAttribute('class', 'fa-solid fa-pen-to-square');
+  editIcon.setAttribute('data-entry-id', entry.entryId);
   h2Element.appendChild(editIcon);
 
   var pElement = document.createElement('p');
