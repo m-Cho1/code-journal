@@ -37,13 +37,13 @@ function submitEventFunction(event) {
       photoUrl: $photoUrl.value,
       notes: $notes.value
     };
-    var listElements = document.querySelectorAll('li');
+    var $listElements = document.querySelectorAll('li');
     var replaceEntryData = renderEntry(editEntryData);
     for (var i = 0; i < data.entries.length; i++) {
-      var retrievingEditDataId = listElements[i].getAttribute('data-entry-id');
+      var retrievingEditDataId = $listElements[i].getAttribute('data-entry-id');
       var matchEntryId = String(data.editing.entryId);
       if (retrievingEditDataId === matchEntryId) {
-        listElements[i].replaceWith(replaceEntryData);
+        $listElements[i].replaceWith(replaceEntryData);
         data.entries[i] = editEntryData;
       }
     }
