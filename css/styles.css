@@ -68,3 +68,21 @@ textarea {
   padding-left: 2rem;
   text-decoration: none;
 }
+
+.style-ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.align-item {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
