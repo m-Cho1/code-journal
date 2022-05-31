@@ -62,3 +62,11 @@ function renderEntry(entry) {
   return listEl;
 
 }
+
+var $ul = document.querySelector('#entries-ul');
+window.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var entry = renderEntry(data.entries[i]);
+    $ul.appendChild(entry);
+  }
+});
