@@ -21,7 +21,10 @@ function submitEventFunction(event) {
   data.nextEntryId++;
   data.entries.unshift(newEntryData);
   $imgSrc.setAttribute('src', 'images/placeholder-image-square.jpg');
+  var submitEntry = renderEntry(data.entries[0]);
+  $ul.prepend(submitEntry);
   $form.reset();
+  changeViews('entries');
 }
 
 function renderEntry(entry) {
@@ -70,3 +73,35 @@ window.addEventListener('DOMContentLoaded', function (event) {
     $ul.appendChild(entry);
   }
 });
+
+var $entriesButton = document.querySelector('#entries-button');
+var $buttonNew = document.querySelector('#button-new');
+
+$buttonNew.addEventListener('click', function (event) {
+  resetForm();
+  changeViews('entry-form');
+});
+
+$entriesButton.addEventListener('click', function (event) {
+  resetForm();
+  changeViews('entries');
+});
+
+var $views = document.querySelectorAll('[data-view]');
+function changeViews(view) {
+  for (var i = 0; i < $views.length; i++) {
+    var pagetView = $views[i];
+    if (view === pagetView.getAttribute('data-view')) {
+      pagetView.classList.remove('hidden');
+    } else {
+      pagetView.classList.add('hidden');
+    }
+  }
+}
+
+function resetForm(entry) {
+  $title.value = '';
+  $photoUrl.value = '';
+  $notes.value = '';
+  $imgSrc.setAttribute('src', 'images/placeholder-image-square.jpg');
+}
