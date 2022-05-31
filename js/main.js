@@ -10,6 +10,7 @@ $photoUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', submitEventFunction);
 
+// submit function
 function submitEventFunction(event) {
   event.preventDefault();
   var newEntryData = {
@@ -27,6 +28,7 @@ function submitEventFunction(event) {
   changeViews('entries');
 }
 
+// render entry function
 function renderEntry(entry) {
   var listEl = document.createElement('li');
   listEl.setAttribute('class', 'style-list-entry');
@@ -66,14 +68,17 @@ function renderEntry(entry) {
 
 }
 
+// rendering list to ul
 var $ul = document.querySelector('#entries-ul');
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entry = renderEntry(data.entries[i]);
     $ul.appendChild(entry);
   }
+  changeViews(data.view);
 });
 
+// button new and entries click events
 var $entriesButton = document.querySelector('#entries-button');
 var $buttonNew = document.querySelector('#button-new');
 
@@ -87,18 +92,21 @@ $entriesButton.addEventListener('click', function (event) {
   changeViews('entries');
 });
 
+// changing view pages
 var $views = document.querySelectorAll('[data-view]');
 function changeViews(view) {
   for (var i = 0; i < $views.length; i++) {
-    var pagetView = $views[i];
-    if (view === pagetView.getAttribute('data-view')) {
-      pagetView.classList.remove('hidden');
+    var pageView = $views[i];
+    if (view === pageView.getAttribute('data-view')) {
+      pageView.classList.remove('hidden');
     } else {
-      pagetView.classList.add('hidden');
+      pageView.classList.add('hidden');
     }
   }
+  data.view = view;
 }
 
+// resetting any inputs in entry-form view
 function resetForm(entry) {
   $title.value = '';
   $photoUrl.value = '';

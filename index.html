@@ -32,7 +32,7 @@
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container hidden view">
+    <div data-view="entry-form" class="container view">
       <form action="" id="form-entry">
         <div class="row">
           <div class="column-full">
@@ -64,13 +64,11 @@
       </form>
     </div>
     <!-- View Entries page -->
-    <div data-view="entries">
-      <div class="container view">
-        <div class="row">
-          <div class="column-full display-flex space-between align-item">
-            <h2 class="font">Entries</h2>
-            <button id="button-new" class="style-button">NEW</button>
-          </div>
+    <div data-view="entries" class="container view hidden">
+      <div class="row">
+        <div class="column-full display-flex space-between align-item">
+          <h2 class="font">Entries</h2>
+          <button id="button-new" class="style-button">NEW</button>
         </div>
       </div>
       <ul id="entries-ul" class="style-ul">

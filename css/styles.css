@@ -47,6 +47,10 @@ textarea {
   resize: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .button-container {
   padding-top: 1rem;
   display: flex;
