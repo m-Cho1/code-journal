@@ -24,7 +24,7 @@ function submitEventFunction(event) {
   $form.reset();
 }
 
-function createEntry(entry) {
+function renderEntry(entry) {
   var listEl = document.createElement('li');
   listEl.setAttribute('class', 'style-list-entry');
 
@@ -42,7 +42,7 @@ function createEntry(entry) {
 
   var imgEl = document.createElement('img');
   imgEl.setAttribute('class', 'style-image-entry');
-  imgEl.setAttribute('src', $photoUrl.value);
+  imgEl.setAttribute('src', entry.photoUrl);
   imgEl.setAttribute('alt', 'image');
   columnDiv1.appendChild(imgEl);
 
@@ -52,11 +52,11 @@ function createEntry(entry) {
 
   var h2Element = document.createElement('h2');
   h2Element.setAttribute('class', 'title-margin-top');
-  h2Element.textContent = $title.value;
+  h2Element.textContent = entry.title;
   columnDiv2.appendChild(h2Element);
 
   var pElement = document.createElement('p');
-  pElement.textContent = $notes.value;
+  pElement.textContent = entry.notes;
   columnDiv2.appendChild(pElement);
 
   return listEl;
