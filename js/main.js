@@ -5,7 +5,6 @@ var $imgSrc = document.querySelector('.placeholder-img');
 var $form = document.querySelector('#form-entry');
 var $editTitle = document.querySelector('.entry-form-title');
 var $deleteEntryBtn = document.querySelector('#delete-button');
-var $entries = document.querySelector('#entries');
 
 $photoUrl.addEventListener('input', function (event) {
   $imgSrc.setAttribute('src', $photoUrl.value);
@@ -183,5 +182,10 @@ var $modalContainer = document.querySelector('#modal');
 $deleteEntryBtn.addEventListener('click', popupFunction);
 function popupFunction(event) {
   $modalContainer.classList.remove('hide-view');
-  $entries.classList.add('hidden');
 }
+
+// remove modal when cancel is clicked
+var $cancelBtn = document.querySelector('#button-cancel');
+$cancelBtn.addEventListener('click', function (event) {
+  $modalContainer.classList.add('hide-view');
+});
