@@ -4,6 +4,8 @@ var $notes = document.querySelector('#notes');
 var $imgSrc = document.querySelector('.placeholder-img');
 var $form = document.querySelector('#form-entry');
 var $editTitle = document.querySelector('.entry-form-title');
+var $deleteEntryBtn = document.querySelector('#delete-button');
+var $entries = document.querySelector('#entries');
 
 $photoUrl.addEventListener('input', function (event) {
   $imgSrc.setAttribute('src', $photoUrl.value);
@@ -109,18 +111,17 @@ window.addEventListener('DOMContentLoaded', function (event) {
     $ul.appendChild(entry);
   }
   changeViews(data.view);
-  $deleteEntryBtn.classList.add('hidden');
+  $deleteEntryBtn.classList.add('hide-view');
 });
 
 // button new and entries click events
 var $entriesButton = document.querySelector('#entries-button');
 var $buttonNew = document.querySelector('#button-new');
-var $deleteEntryBtn = document.querySelector('.style-button-delete');
 
 $buttonNew.addEventListener('click', function (event) {
   resetForm();
   $editTitle.textContent = 'New Entry';
-  $deleteEntryBtn.classList.add('hidden');
+  $deleteEntryBtn.classList.add('hide-view');
   changeViews('entry-form');
 });
 
@@ -164,10 +165,9 @@ $ul.addEventListener('click', function (event) {
       }
     }
   }
-
+  $deleteEntryBtn.classList.remove('hide-view');
   changeViews('entry-form');
   editEntry(data.editing);
-  $deleteEntryBtn.classList.remove('hidden');
   $editTitle.textContent = 'Edit Entry';
 });
 
@@ -176,4 +176,12 @@ function editEntry(object) {
   $photoUrl.value = object.photoUrl;
   $notes.value = object.notes;
   $imgSrc.setAttribute('src', object.photoUrl);
+}
+
+// showing modal when delete button clicked
+var $modalContainer = document.querySelector('#modal');
+$deleteEntryBtn.addEventListener('click', popupFunction);
+function popupFunction(event) {
+  $modalContainer.classList.remove('hide-view');
+  $entries.classList.add('hidden');
 }
