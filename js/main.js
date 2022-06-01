@@ -189,3 +189,21 @@ var $cancelBtn = document.querySelector('#button-cancel');
 $cancelBtn.addEventListener('click', function (event) {
   $modalContainer.classList.add('hide-view');
 });
+
+// remove entry when delete confirm clicked
+var $confirmBtn = document.querySelector('#button-confirm');
+$confirmBtn.addEventListener('click', deleteEntryFunction);
+function deleteEntryFunction(event) {
+  var $listElements = document.querySelectorAll('li');
+  var currentEntry = data.editing.entryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    var indexEntryId = $listElements[i].getAttribute('data-entry-id');
+    if (currentEntry === parseInt(indexEntryId)) {
+      data.entries.splice(i, 1);
+      $listElements[i].remove();
+    }
+  }
+  $modalContainer.classList.add('hide-view');
+  data.editing = null;
+  changeViews('entries');
+}
