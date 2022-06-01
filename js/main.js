@@ -110,7 +110,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     $ul.appendChild(entry);
   }
   changeViews(data.view);
-  $deleteEntryBtn.classList.add('hide-view');
+  $deleteEntryBtn.classList.add('hidden');
 });
 
 // button new and entries click events
@@ -120,7 +120,7 @@ var $buttonNew = document.querySelector('#button-new');
 $buttonNew.addEventListener('click', function (event) {
   resetForm();
   $editTitle.textContent = 'New Entry';
-  $deleteEntryBtn.classList.add('hide-view');
+  $deleteEntryBtn.classList.add('hidden');
   changeViews('entry-form');
 });
 
@@ -164,7 +164,7 @@ $ul.addEventListener('click', function (event) {
       }
     }
   }
-  $deleteEntryBtn.classList.remove('hide-view');
+  $deleteEntryBtn.classList.remove('hidden');
   changeViews('entry-form');
   editEntry(data.editing);
   $editTitle.textContent = 'Edit Entry';
@@ -181,13 +181,13 @@ function editEntry(object) {
 var $modalContainer = document.querySelector('#modal');
 $deleteEntryBtn.addEventListener('click', popupFunction);
 function popupFunction(event) {
-  $modalContainer.classList.remove('hide-view');
+  $modalContainer.classList.remove('hidden');
 }
 
 // remove modal when cancel is clicked
 var $cancelBtn = document.querySelector('#button-cancel');
 $cancelBtn.addEventListener('click', function (event) {
-  $modalContainer.classList.add('hide-view');
+  $modalContainer.classList.add('hidden');
 });
 
 // remove entry when delete confirm clicked
@@ -203,7 +203,7 @@ function deleteEntryFunction(event) {
       $listElements[i].remove();
     }
   }
-  $modalContainer.classList.add('hide-view');
+  $modalContainer.classList.add('hidden');
   data.editing = null;
   changeViews('entries');
 }
