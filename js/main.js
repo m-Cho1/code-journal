@@ -109,15 +109,18 @@ window.addEventListener('DOMContentLoaded', function (event) {
     $ul.appendChild(entry);
   }
   changeViews(data.view);
+  $deleteEntryBtn.classList.add('hidden');
 });
 
 // button new and entries click events
 var $entriesButton = document.querySelector('#entries-button');
 var $buttonNew = document.querySelector('#button-new');
+var $deleteEntryBtn = document.querySelector('.style-button-delete');
 
 $buttonNew.addEventListener('click', function (event) {
   resetForm();
   $editTitle.textContent = 'New Entry';
+  $deleteEntryBtn.classList.add('hidden');
   changeViews('entry-form');
 });
 
@@ -164,6 +167,7 @@ $ul.addEventListener('click', function (event) {
 
   changeViews('entry-form');
   editEntry(data.editing);
+  $deleteEntryBtn.classList.remove('hidden');
   $editTitle.textContent = 'Edit Entry';
 });
 

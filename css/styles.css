@@ -107,3 +107,10 @@ button:hover {
 .style-icon {
   cursor: pointer;
 }
+
+.style-button-delete {
+  background-color: transparent;
+  border: none;
+  color: orangered;
+  text-decoration: underline;
+}
