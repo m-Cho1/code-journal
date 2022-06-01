@@ -103,3 +103,7 @@ button:hover {
 .style-list-entry {
   padding-bottom: 3rem;
 }
+
+.style-icon {
+  cursor: pointer;
+}
