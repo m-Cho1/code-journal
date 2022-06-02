@@ -75,7 +75,7 @@ function renderEntry(entry) {
   rowDiv.appendChild(columnDiv1);
 
   var imgEl = document.createElement('img');
-  imgEl.setAttribute('class', 'style-image-entry');
+  imgEl.setAttribute('class', 'style-image-entry margin-bottom');
   imgEl.setAttribute('src', entry.photoUrl);
   imgEl.setAttribute('alt', 'image');
   columnDiv1.appendChild(imgEl);
@@ -85,7 +85,7 @@ function renderEntry(entry) {
   rowDiv.appendChild(columnDiv2);
 
   var h2Element = document.createElement('h2');
-  h2Element.setAttribute('class', 'title-margin-top display-flex space-between');
+  h2Element.setAttribute('class', 'display-flex space-between');
   h2Element.textContent = entry.title;
   columnDiv2.appendChild(h2Element);
 
