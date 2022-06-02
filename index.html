@@ -19,7 +19,8 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
+  <!--navbar-->
+  <header class="color">
     <div class="container navbar font display-flex">
       <div class="row">
         <div class="column-full">
@@ -32,6 +33,7 @@
     </div>
   </header>
   <main>
+    <!--entry form-->
     <div data-view="entry-form" class="container view">
       <form action="" id="form-entry">
         <div class="row">
@@ -53,18 +55,21 @@
         <div class="row">
           <div class="column-full display-flex display-column">
             <label for="notes" class="style-label">Notes</label>
-            <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+            <textarea name="notes" id="notes" cols="30" rows="10" class="style-textarea"></textarea>
           </div>
         </div>
         <div class="row">
-          <div class="column-full button-container">
+          <div class="column-full button-container display-flex space-between">
+            <div class="style-button-container">
+              <button type="button" id="delete-button" class="delete-entry-button style-button-delete">Delete Entry</button>
+            </div>
             <button class="font style-button">SAVE</button>
           </div>
         </div>
       </form>
     </div>
-    <!-- View Entries page -->
-    <div data-view="entries" class="container view hidden">
+    <!-- Entries view page -->
+    <div id="entries" data-view="entries" class="container view hidden">
       <div class="row">
         <div class="column-full display-flex space-between align-item">
           <h2 class="font">Entries</h2>
@@ -76,6 +81,22 @@
       </ul>
     </div>
   </main>
+  <!--popup container for deleting entry-->
+  <div id="modal" class="modal-container overlay hidden">
+    <div class="row">
+      <div class="column-full display-flex justify-center">
+        <div class="style-popup-message">
+          <p class="font">
+            Are you sure you want to delete this entry?
+          </p>
+          <div class="buttons-container">
+            <button id="button-cancel" class="font style-button-cancel">CANCEL</button>
+            <button id="button-confirm" class="font style-button-confirm">CONFIRM</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

@@ -4,6 +4,7 @@ var $notes = document.querySelector('#notes');
 var $imgSrc = document.querySelector('.placeholder-img');
 var $form = document.querySelector('#form-entry');
 var $editTitle = document.querySelector('.entry-form-title');
+var $deleteEntryBtn = document.querySelector('#delete-button');
 
 $photoUrl.addEventListener('input', function (event) {
   $imgSrc.setAttribute('src', $photoUrl.value);
@@ -11,7 +12,7 @@ $photoUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', submitEventFunction);
 
-// submit function
+// submit/edit function
 function submitEventFunction(event) {
   event.preventDefault();
 
@@ -62,7 +63,7 @@ function renderEntry(entry) {
   listEl.setAttribute('class', 'style-list-entry');
 
   var containerDiv = document.createElement('div');
-  containerDiv.setAttribute('class', 'container');
+  containerDiv.setAttribute('class', 'container padding0');
   listEl.appendChild(containerDiv);
 
   var rowDiv = document.createElement('div');
@@ -74,7 +75,7 @@ function renderEntry(entry) {
   rowDiv.appendChild(columnDiv1);
 
   var imgEl = document.createElement('img');
-  imgEl.setAttribute('class', 'style-image-entry');
+  imgEl.setAttribute('class', 'style-image-entry margin-bottom');
   imgEl.setAttribute('src', entry.photoUrl);
   imgEl.setAttribute('alt', 'image');
   columnDiv1.appendChild(imgEl);
@@ -84,7 +85,7 @@ function renderEntry(entry) {
   rowDiv.appendChild(columnDiv2);
 
   var h2Element = document.createElement('h2');
-  h2Element.setAttribute('class', 'title-margin-top display-flex space-between');
+  h2Element.setAttribute('class', 'display-flex space-between');
   h2Element.textContent = entry.title;
   columnDiv2.appendChild(h2Element);
 
@@ -109,6 +110,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     $ul.appendChild(entry);
   }
   changeViews(data.view);
+  $deleteEntryBtn.classList.add('hidden');
 });
 
 // button new and entries click events
@@ -118,6 +120,7 @@ var $buttonNew = document.querySelector('#button-new');
 $buttonNew.addEventListener('click', function (event) {
   resetForm();
   $editTitle.textContent = 'New Entry';
+  $deleteEntryBtn.classList.add('hidden');
   changeViews('entry-form');
 });
 
@@ -161,7 +164,7 @@ $ul.addEventListener('click', function (event) {
       }
     }
   }
-
+  $deleteEntryBtn.classList.remove('hidden');
   changeViews('entry-form');
   editEntry(data.editing);
   $editTitle.textContent = 'Edit Entry';
@@ -172,4 +175,35 @@ function editEntry(object) {
   $photoUrl.value = object.photoUrl;
   $notes.value = object.notes;
   $imgSrc.setAttribute('src', object.photoUrl);
+}
+
+// showing modal when delete button clicked
+var $modalContainer = document.querySelector('#modal');
+$deleteEntryBtn.addEventListener('click', popupFunction);
+function popupFunction(event) {
+  $modalContainer.classList.remove('hidden');
+}
+
+// remove modal when cancel is clicked
+var $cancelBtn = document.querySelector('#button-cancel');
+$cancelBtn.addEventListener('click', function (event) {
+  $modalContainer.classList.add('hidden');
+});
+
+// remove entry when delete confirm clicked
+var $confirmBtn = document.querySelector('#button-confirm');
+$confirmBtn.addEventListener('click', deleteEntryFunction);
+function deleteEntryFunction(event) {
+  var $listElements = document.querySelectorAll('li');
+  var currentEntry = data.editing.entryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    var indexEntryId = $listElements[i].getAttribute('data-entry-id');
+    if (currentEntry === parseInt(indexEntryId)) {
+      data.entries.splice(i, 1);
+      $listElements[i].remove();
+    }
+  }
+  $modalContainer.classList.add('hidden');
+  data.editing = null;
+  changeViews('entries');
 }
