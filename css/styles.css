@@ -1,4 +1,8 @@
-header {
+body {
+  background-color: rgb(241, 241, 241);
+}
+
+header.color {
   background-color: #562b81;
 }
 
@@ -40,8 +44,19 @@ header {
   padding-right: 0;
 }
 
+.style-button-container {
+  margin-bottom: 3rem;
+}
+
 .style-input {
+  border: 1px solid lightgray;
+  border-radius: 0.2rem;
   height: 2rem;
+}
+
+.style-textarea {
+  border: 1px solid lightgray;
+  border-radius: 0.2rem;
 }
 
 .display-flex {
