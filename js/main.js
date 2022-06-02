@@ -12,7 +12,7 @@ $photoUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', submitEventFunction);
 
-// submit function
+// submit/edit function
 function submitEventFunction(event) {
   event.preventDefault();
 
@@ -63,7 +63,7 @@ function renderEntry(entry) {
   listEl.setAttribute('class', 'style-list-entry');
 
   var containerDiv = document.createElement('div');
-  containerDiv.setAttribute('class', 'container');
+  containerDiv.setAttribute('class', 'container padding0');
   listEl.appendChild(containerDiv);
 
   var rowDiv = document.createElement('div');
